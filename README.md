@@ -2,9 +2,8 @@
 
 ## 🌐 Live Demo
 
-Experience the Service Request Management Portal through the live deployment below:
-
-🔗 **Live Demo:** https://ajaychauhanai.github.io/campus-service-request-system/
+🔗 **Try the Application:**  
+https://ajaychauhanai.github.io/campus-service-request-system/
 
 The demo allows users to submit service requests and view how administrators manage and resolve them.
 
@@ -104,20 +103,23 @@ This ensures **better tracking, accountability, and faster issue resolution**.
 
 ---
 
-# 🏗 System Architecture
+## 🏗 System Architecture
 
-- Student Portal → Request Form
--    ↓
-- Google Apps Script (Backend API)
--    ↓
-- Google Sheets (Database)
--    ↓
-- Admin Dashboard
--    ↓
-- Status Update → Student View
-
-
----
+```
+Student Portal
+     ↓
+Request Form
+     ↓
+Google Apps Script API
+     ↓
+Google Sheets Database
+     ↓
+Admin Dashboard
+     ↓
+Status Update
+     ↓
+Student View
+```
 
 ## 📸 Project Screenshots
 
@@ -142,19 +144,13 @@ This ensures **better tracking, accountability, and faster issue resolution**.
 
 ---
 
-# 👨‍💻 Team Members
+## 👨‍💻 Team Members
 
-### Ajay Chauhan
-- 🔗 GitHub: https://github.com/ajaychauhanAI
-- 💼 LinkedIn: https://www.linkedin.com/in/ajay-chauhan-9053893a3
-
-### Team Member 2
-- 🔗 GitHub: ________
-- 💼 LinkedIn: ________
-
-### Team Member 3
-- 🔗 GitHub: https://github.com/Aman-Bhardwaj-svg
-- 💼 LinkedIn: ________
+| Name | GitHub | LinkedIn |
+|-----|------|------|
+| Ajay Chauhan | GitHub: https://github.com/ajaychauhanAI | LinkedIn: https://www.linkedin.com/in/ajay-chauhan-9053893a3 |
+| Aman Bhardwaj | GitHub: https://github.com/Aman-Bhardwaj-svg | - |
+| Abhishek Dwivedi | - | - |
 
 ---
 
