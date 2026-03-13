@@ -2,8 +2,11 @@
 <html>
 
 <head>
-
-<title>Student Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Dashboard | Service Request Portal</title>
+<meta name="description" content="Student portal to submit service requests and track request status.">
+<meta name="theme-color" content="#2563eb">
 
 <style>
 
@@ -97,6 +100,104 @@ color:#22c55e;
 font-weight:bold;
 }
 
+
+/* ================= MOBILE ================= */
+
+@media (max-width:600px){
+
+/* Header */
+
+.header{
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+gap:12px;
+}
+
+.header button{
+width:100%;
+}
+
+
+/* Request Form Card */
+
+.request-card{
+padding:18px;
+border-radius:14px;
+margin-top:15px;
+}
+
+.request-card h2{
+font-size:22px;
+margin-bottom:15px;
+}
+
+
+/* Inputs */
+
+.request-card input,
+.request-card textarea{
+width:100%;
+font-size:14px;
+padding:12px;
+}
+
+.request-card textarea{
+min-height:120px;
+}
+
+
+/* Submit button */
+
+.request-card button{
+width:100%;
+padding:12px;
+font-size:15px;
+}
+
+
+/* My Requests title */
+
+h2{
+font-size:22px;
+margin-top:25px;
+}
+
+
+/* Table */
+
+.table-container{
+width:100%;
+overflow-x:auto;
+}
+
+table{
+min-width:600px;
+}
+
+
+/* Card spacing */
+
+.section{
+margin-top:20px;
+}
+
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width:400px){
+
+.request-card{
+padding:15px;
+}
+
+.request-card h2{
+font-size:20px;
+}
+
+}
 </style>
 
 </head>

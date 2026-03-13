@@ -2,8 +2,11 @@
 <html>
 
 <head>
-
-<title>Admin Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | Service Request Portal</title>
+<meta name="description" content="Admin dashboard for managing service requests across departments.">
+<meta name="theme-color" content="#2563eb">
 
 <style>
 
@@ -91,6 +94,111 @@ color:white;
 
 }
 
+/* ================= TABLET ================= */
+
+@media (max-width:1024px){
+
+.cards{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:16px;
+}
+
+.card{
+width:100%;
+padding:18px;
+}
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width:600px){
+
+/* Cards */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+margin-top:15px;
+}
+
+.card{
+width:100%;
+padding:14px;
+border-radius:12px;
+text-align:center;
+}
+
+.card h2{
+font-size:22px;
+}
+
+.card p{
+font-size:13px;
+}
+
+
+/* Header */
+
+.header{
+flex-direction:column;
+align-items:flex-start;
+gap:10px;
+}
+
+.header .actions{
+display:flex;
+gap:10px;
+width:100%;
+}
+
+.header .actions button{
+flex:1;
+}
+
+
+/* Search */
+
+.search-box input{
+width:100%;
+}
+
+
+/* Table */
+
+.table-container{
+width:100%;
+overflow-x:auto;
+}
+
+table{
+min-width:650px;
+}
+
+th,td{
+white-space:nowrap;
+}
+
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width:400px){
+
+.cards{
+grid-template-columns:1fr;
+}
+
+.card h2{
+font-size:20px;
+}
+
+}
+
 </style>
 
 </head>
@@ -140,7 +248,7 @@ color:white;
 
 <div class="search">
 
-<input type="text" id="search" placeholder="Search ..." onkeyup="filterTable()">
+<input type="text" id="search" placeholder="Search..." onkeyup="filterTable()">
 
 </div>
 

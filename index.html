@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service Portal - Login & Register</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Service Request Management Portal</title>
+<meta name="description" content="Service Request Management Portal for students to submit and track service requests.">
+<meta name="theme-color" content="#2563eb">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
         
@@ -97,34 +98,110 @@
         }
 
         .hidden { display: none; }
+
+/* ================= Tablet ================= */
+
+@media (max-width:1024px){
+
+.auth-card{
+width:70%;
+padding:25px;
+}
+
+h2{
+font-size:24px;
+}
+
+}
+
+/* ================= Mobile ================= */
+
+@media (max-width:600px){
+
+.auth-card{
+width:90%;
+padding:20px;
+}
+
+.input-group input,
+.input-group select{
+font-size:14px;
+padding:10px;
+}
+
+.btn{
+width:100%;
+padding:10px;
+font-size:14px;
+}
+
+.toggle-text{
+font-size:14px;
+}
+
+}
+
+/* ================= Small Mobile ================= */
+
+@media (max-width:400px){
+
+.auth-card{
+width:95%;
+padding:15px;
+}
+
+h2{
+font-size:20px;
+}
+
+}
     </style>
 </head>
 <body>
 
 <div class="auth-card">
+
+    <!-- LOGIN SECTION -->
     <div id="login-section">
+
         <h2>Login</h2>
-        <form onsubmit="event.preventDefault(); handleLogin();">
+
+        <form id="loginForm" onsubmit="event.preventDefault(); handleLogin();">
+
             <div class="input-group">
                 <input type="text" id="loginRoll" placeholder="University Roll Number" required>
                 <i class="fa-solid fa-id-card"></i>
             </div>
+
             <div class="input-group">
                 <input type="password" id="loginPass" placeholder="Password" required>
                 <i class="fa-solid fa-lock"></i>
             </div>
+
             <button type="submit" class="btn">Login</button>
+
         </form>
-        <p class="toggle-text">Don't have an account? <span onclick="toggleAuth()">Register</span></p>
+
+        <p class="toggle-text">
+            Don't have an account?
+            <span onclick="toggleAuth()">Register</span>
+        </p>
+
     </div>
 
+
+    <!-- REGISTER SECTION -->
     <div id="register-section" class="hidden">
+
         <h2>Register</h2>
-        <form onsubmit="event.preventDefault(); handleRegister();">
+
+        <form id="registerForm" onsubmit="event.preventDefault(); handleRegister();">
+
             <div class="input-group">
                 <input type="text" id="regRoll" placeholder="University Roll Number" required>
                 <i class="fa-solid fa-id-card"></i>
             </div>
+
             <div class="input-group">
                 <input type="text" id="regName" placeholder="Full Name" required>
                 <i class="fa-solid fa-user"></i>
@@ -143,14 +220,23 @@
                     <option value="PHARMACY">Pharmacy</option>
                 </select>
             </div>
+
             <div class="input-group">
                 <input type="password" id="regPass" placeholder="Create Password" required>
                 <i class="fa-solid fa-lock"></i>
             </div>
+
             <button type="submit" class="btn">Register</button>
+
         </form>
-        <p class="toggle-text">Already registered? <span onclick="toggleAuth()">Sign In</span></p>
+
+        <p class="toggle-text">
+            Already registered?
+            <span onclick="toggleAuth()">Sign In</span>
+        </p>
+
     </div>
+
 </div>
 
 <script>
@@ -284,21 +370,6 @@ alert("Server Error. Please try again.");
 
 }
 
-/* ENTER KEY LOGIN */
-
-document.getElementById("loginPass").addEventListener("keypress", function(e){
-if(e.key === "Enter"){
-handleLogin();
-}
-});
-
-/* ENTER KEY REGISTER */
-
-document.getElementById("regPass").addEventListener("keypress", function(e){
-if(e.key === "Enter"){
-handleRegister();
-}
-});
 </script>
 
 </body>
