@@ -162,9 +162,9 @@ Student View
 
 | Name | Profiles |
 |-----|----------|
-| **Ajay Chauhan** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-black?style=for-the-badge&logo=github)](https://github.com/ajaychauhanAI) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/ajay-chauhan-9053893a3) |
-| **Aman Bhardwaj** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-black?style=for-the-badge&logo=github)](https://github.com/Aman-Bhardwaj-svg) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/ |
-| **Abhishek Dwivedi** | - | - |
+| **Ajay Chauhan** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-black?style=for-the-badge&logo=github)](https://github.com/ajaychauhanAI) [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/ajay-chauhan-9053893a3) |
+| **Aman Bhardwaj** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-black?style=for-the-badge&logo=github)](https://github.com/Aman-Bhardwaj-svg) - |
+| **Abhishek Dwivedi** | -  - |
 ---
 
 ## 🤝 Contribution
