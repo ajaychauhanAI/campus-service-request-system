@@ -158,12 +158,13 @@ Student View
 
 ## 👨‍💻 Team Members
 
-| Name | GitHub | LinkedIn |
-|-----|------|------|
-| Ajay Chauhan | [GitHub](https://github.com/ajaychauhanAI) | [LinkedIn](https://www.linkedin.com/in/ajay-chauhan-9053893a3) |
-| Aman Bhardwaj | [GitHub](https://github.com/Aman-Bhardwaj-svg) | - |
-| Abhishek Dwivedi | - | - |
+## 👨‍💻 Team Members
 
+| Name | Profiles |
+|-----|----------|
+| **Ajay Chauhan** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-black?style=for-the-badge&logo=github)](https://github.com/ajaychauhanAI) [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/ajay-chauhan-9053893a3) |
+| **Aman Bhardwaj** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-black?style=for-the-badge&logo=github)](https://github.com/Aman-Bhardwaj-svg) |
+| **Abhishek Dwivedi** | - |
 ---
 
 ## 🤝 Contribution
