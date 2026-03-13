@@ -153,7 +153,7 @@ This ensures **better tracking, accountability, and faster issue resolution**.
 - 💼 LinkedIn: ________
 
 ### Team Member 3
-- 🔗 GitHub: _________
+- 🔗 GitHub: https://github.com/Aman-Bhardwaj-svg
 - 💼 LinkedIn: ________
 
 ---
