@@ -1,9 +1,9 @@
 # 🚀 Service Request Management Portal
+![Project Preview](images/admin-dashboard.png)
 
 ## 🌐 Live Demo
 
-🔗 **Try the Application:**  
-https://ajaychauhanai.github.io/campus-service-request-system/
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=for-the-badge&logo=google-chrome)](https://ajaychauhanai.github.io/campus-service-request-system/)
 
 The demo allows users to submit service requests and view how administrators manage and resolve them.
 
@@ -62,18 +62,13 @@ This ensures **better tracking, accountability, and faster issue resolution**.
 
 ---
 
-# ⚙️ Tech Stack
+## ⚙️ Tech Stack
 
-### Frontend
-- HTML
-- CSS
-- JavaScript
-
-### Backend
-- Google Apps Script (GAS)
-
-### Database
-- Google Sheets
+| Layer | Technology |
+|------|-----------|
+| Frontend | HTML, CSS, JavaScript |
+| Backend | Google Apps Script |
+| Database | Google Sheets |
 
 ---
 
@@ -93,13 +88,13 @@ This ensures **better tracking, accountability, and faster issue resolution**.
 
 ---
 
-# ✨ Key Features
+## ✨ Key Features
 
-✔ Role-Based Access Control  
-✔ Request Tracking System  
-✔ Department-wise Issue Management  
-✔ Centralized Data Storage  
-✔ Simple and User-Friendly Interface  
+- 🔐 Role-Based Access Control
+- 📊 Request Tracking System
+- 🏢 Department-wise Issue Management
+- ☁️ Centralized Data Storage
+- 📱 Responsive User Interface 
 
 ---
 
@@ -144,22 +139,46 @@ Student View
 
 ---
 
+## 📚 Table of Contents
+
+- Live Demo
+- Problem Statement
+- Proposed Solution
+- User Roles
+- Tech Stack
+- System Workflow
+- Key Features
+- System Architecture
+- Screenshots
+- Future Improvements
+- Team Members
+- License
+
+---
+
 ## 👨‍💻 Team Members
 
 | Name | GitHub | LinkedIn |
 |-----|------|------|
-| Ajay Chauhan | GitHub: https://github.com/ajaychauhanAI | LinkedIn: https://www.linkedin.com/in/ajay-chauhan-9053893a3 |
-| Aman Bhardwaj | GitHub: https://github.com/Aman-Bhardwaj-svg | - |
+| Ajay Chauhan | [GitHub](https://github.com/ajaychauhanAI) | [LinkedIn](https://www.linkedin.com/in/ajay-chauhan-9053893a3) |
+| Aman Bhardwaj | [GitHub](https://github.com/Aman-Bhardwaj-svg) | - |
 | Abhishek Dwivedi | - | - |
 
 ---
 
-# 🏆 Hackathon Project
+## 🤝 Contribution
+
+Contributions are welcome.  
+If you would like to improve the project, feel free to fork the repository and submit a pull request.
+
+---
+
+## 🏆 Hackathon Project
 
 This project was developed during a **University Hackathon Event** where teams built solutions for real-world problems within a limited time.
 
 ---
 
-# 📜 License
+## 📜 License
 
-This project is created for **educational and demonstration purposes**.
+This project is created for **educational purposes** and is open for learning and experimentation.
