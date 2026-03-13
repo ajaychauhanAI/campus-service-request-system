@@ -138,17 +138,17 @@ This ensures **better tracking, accountability, and faster issue resolution**.
 
 # 👨‍💻 Team Members
 
-### Ajay
-GitHub: https://github.com/ajaychauhanAI
-LinkedIn: https://www.linkedin.com/in/ajay-chauhan-9053893a3?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
+### Ajay Chauhan
+- 🔗 GitHub: https://github.com/ajaychauhanAI
+- 💼 LinkedIn: https://www.linkedin.com/in/ajay-chauhan-9053893a3
 
 ### Team Member 2
-GitHub: https://github.com/MEMBER2  
-LinkedIn: https://linkedin.com/in/MEMBER2
+- 🔗 GitHub: ________
+- 💼 LinkedIn: ________
 
 ### Team Member 3
-GitHub: https://github.com/MEMBER3  
-LinkedIn: https://linkedin.com/in/MEMBER3
+- 🔗 GitHub: _________
+- 💼 LinkedIn: ________
 
 ---
 
