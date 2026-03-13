@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Portal - Login & Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body {
+            background: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        /* Main Center Box */
+        .auth-card {
+            width: 100%;
+            max-width: 400px; /* Ek standard mobile-friendly width */
+            background: #16213e;
+            padding: 40px;
+            border: 2px solid #00d4ff;
+            box-shadow: 0 0 25px #00d4ff;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        h2 { margin-bottom: 30px; font-size: 28px; letter-spacing: 1px; }
+
+        /* Input Fields Styling */
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #fff;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            padding: 10px 30px 10px 5px;
+            font-size: 15px;
+        }
+
+        /* Placeholder color fix */
+        input::placeholder { color: rgba(255, 255, 255, 0.7); }
+
+        .input-group i {
+            position: absolute;
+            right: 5px;
+            top: 12px;
+            color: #00d4ff;
+        }
+
+        /* Dropdown specific */
+        select option { background: #1a1a2e; color: #fff; }
+
+        /* Glowing Button */
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 2px solid #00d4ff;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.4s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #00d4ff;
+            color: #1a1a2e;
+            box-shadow: 0 0 15px #00d4ff;
+        }
+
+        .toggle-text {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .toggle-text span {
+            color: #00d4ff;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="auth-card">
+    <div id="login-section">
+        <h2>Login</h2>
+        <form onsubmit="event.preventDefault(); handleLogin();">
+            <div class="input-group">
+                <input type="text" id="loginRoll" placeholder="University Roll Number" required>
+                <i class="fa-solid fa-id-card"></i>
+            </div>
+            <div class="input-group">
+                <input type="password" id="loginPass" placeholder="Password" required>
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <p class="toggle-text">Don't have an account? <span onclick="toggleAuth()">Register</span></p>
+    </div>
+
+    <div id="register-section" class="hidden">
+        <h2>Register</h2>
+        <form onsubmit="event.preventDefault(); handleRegister();">
+            <div class="input-group">
+                <input type="text" id="regRoll" placeholder="University Roll Number" required>
+                <i class="fa-solid fa-id-card"></i>
+            </div>
+            <div class="input-group">
+                <input type="text" id="regName" placeholder="Full Name" required>
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div class="input-group">
+                <input type="email" id="regemail" placeholder="Email Address" required>
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+
+            <div class="input-group">
+                <select id="regDept" required>
+                    <option value="" disabled selected>Select Department</option>
+                    <option value="SOCA">SOCA (School of Computer Applications)</option>
+                    <option value="BTECH_CSC">B-Tech (Computer Science)</option>
+                    <option value="PHARMACY">Pharmacy</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <input type="password" id="regPass" placeholder="Create Password" required>
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <button type="submit" class="btn">Register</button>
+        </form>
+        <p class="toggle-text">Already registered? <span onclick="toggleAuth()">Sign In</span></p>
+    </div>
+</div>
+
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbx9qCJPXafotNo9lleMj9uSLxmeEbJdgngI7uhEN57UWFs5x1obeNotyLg4rhPSjmH8/exec";
+
+/* Toggle Login/Register */
+function toggleAuth(){
+document.getElementById("login-section").classList.toggle("hidden");
+document.getElementById("register-section").classList.toggle("hidden");
+}
+
+/* =========================
+   REGISTER USER
+========================= */
+
+async function handleRegister(){
+
+const roll = document.getElementById("regRoll").value.trim();
+const name = document.getElementById("regName").value.trim();
+const email = document.getElementById("regemail").value.trim();
+const dept = document.getElementById("regDept").value;
+const password = document.getElementById("regPass").value;
+
+if(!roll || !name || !email || !dept || !password){
+alert("Please fill all fields");
+return;
+}
+
+try{
+
+const res = await fetch(API_URL,{
+method:"POST",
+body: JSON.stringify({
+action:"register",
+roll:roll,
+name:name,
+email:email,
+department:dept,
+password:password
+})
+});
+
+const data = await res.json();
+
+if(data.status === "success"){
+
+alert("Registration Successful!");
+
+document.getElementById("regRoll").value="";
+document.getElementById("regName").value="";
+document.getElementById("regemail").value="";
+document.getElementById("regPass").value="";
+
+toggleAuth();
+
+}else{
+
+alert(data.message || "Registration Failed");
+
+}
+
+}catch(err){
+
+console.error(err);
+alert("Server Error");
+
+}
+
+}
+
+/* =========================
+   LOGIN USER
+========================= */
+async function handleLogin(){
+
+const roll = document.getElementById("loginRoll").value.trim();
+const password = document.getElementById("loginPass").value;
+
+if(!roll || !password){
+alert("Enter Roll Number and Password");
+return;
+}
+
+try{
+
+const res = await fetch(API_URL,{
+method:"POST",
+body: JSON.stringify({
+action:"login",
+roll: roll,
+password: password
+})
+});
+
+const data = await res.json();
+
+/* LOGIN SUCCESS */
+
+if(data.status === "success"){
+
+/* Save session */
+
+localStorage.setItem("role",data.role);
+localStorage.setItem("roll",roll);
+localStorage.setItem("department",data.department);
+
+/* Redirect */
+
+if(data.role === "admin" || data.role === "superadmin"){
+
+window.location.href="admin.html";
+
+}else{
+
+window.location.href="student.html";
+
+}
+
+}else{
+
+alert(data.message || "Invalid Roll Number or Password");
+
+}
+
+}catch(err){
+
+console.error("Login Error:",err);
+alert("Server Error. Please try again.");
+
+}
+
+}
+
+/* ENTER KEY LOGIN */
+
+document.getElementById("loginPass").addEventListener("keypress", function(e){
+if(e.key === "Enter"){
+handleLogin();
+}
+});
+
+/* ENTER KEY REGISTER */
+
+document.getElementById("regPass").addEventListener("keypress", function(e){
+if(e.key === "Enter"){
+handleRegister();
+}
+});
+</script>
+
+</body>
+</html>

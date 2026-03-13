@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Student Dashboard</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+margin:0;
+padding:30px;
+}
+
+/* HEADER */
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+}
+
+.logout{
+background:#ef4444;
+color:white;
+padding:8px 14px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+/* CARDS */
+
+.card{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+margin-bottom:30px;
+}
+
+/* FORM */
+
+input,textarea{
+width:100%;
+padding:10px;
+margin-top:10px;
+border:none;
+border-radius:5px;
+}
+
+.submit{
+background:#22c55e;
+color:white;
+padding:10px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+margin-top:10px;
+}
+
+/* TABLE */
+
+table{
+width:100%;
+border-collapse:collapse;
+background:#1e293b;
+}
+
+th,td{
+padding:12px;
+border-bottom:1px solid #334155;
+text-align:center;
+}
+
+th{
+background:#0284c7;
+}
+
+/* STATUS BADGES */
+
+.pending{
+color:#facc15;
+font-weight:bold;
+}
+
+.progress{
+color:#38bdf8;
+font-weight:bold;
+}
+
+.resolved{
+color:#22c55e;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<script>
+
+/* PAGE PROTECTION */
+
+if(localStorage.getItem("role") !== "student"){
+window.location.href="index.html"
+}
+
+</script>
+
+
+<div class="header">
+
+<h1>Student Dashboard</h1>
+
+<button class="logout" onclick="logout()">Logout</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>Submit Service Request</h2>
+
+<input id="title" placeholder="Request Title">
+
+<textarea id="description" placeholder="Describe your issue"></textarea>
+
+<button class="submit" onclick="submitRequest()">
+Submit Request
+</button>
+
+</div>
+
+
+<h2>My Requests</h2>
+
+<table id="table">
+
+<thead>
+
+<tr>
+<th>ID</th>
+<th>Title</th>
+<th>Description</th>
+<th>Status</th>
+</tr>
+
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+
+<script>
+
+const API_URL="https://script.google.com/macros/s/AKfycbx9qCJPXafotNo9lleMj9uSLxmeEbJdgngI7uhEN57UWFs5x1obeNotyLg4rhPSjmH8/exec"
+
+const roll = localStorage.getItem("roll")
+
+
+/* SUBMIT REQUEST */
+async function submitRequest(){
+
+const title = document.getElementById("title").value.trim()
+const desc = document.getElementById("description").value.trim()
+
+if(!title || !desc){
+alert("Please fill all fields")
+return
+}
+
+try{
+
+const res = await fetch(API_URL,{
+method:"POST",
+body:JSON.stringify({
+action:"createRequest",
+roll:roll,
+title:title,
+description:desc
+})
+})
+
+const data = await res.json()
+
+if(data.status === "success"){
+
+alert("Request submitted successfully!")
+
+document.getElementById("title").value=""
+document.getElementById("description").value=""
+
+loadRequests()
+
+}else{
+
+alert(data.message || "Request failed")
+
+}
+
+}catch(err){
+
+console.error(err)
+alert("Server error")
+
+}
+
+}
+/* LOAD USER REQUESTS */
+
+async function loadRequests(){
+
+const res = await fetch(API_URL,{
+method:"POST",
+body:JSON.stringify({
+action:"getUserRequests",
+roll:roll
+})
+})
+
+const data = await res.json()
+
+const table=document.querySelector("#table tbody")
+
+table.innerHTML=""
+
+data.requests.forEach(r=>{
+
+let statusClass="pending"
+
+if(r.status=="In Progress") statusClass="progress"
+if(r.status=="Resolved") statusClass="resolved"
+
+table.innerHTML+=`
+
+<tr>
+
+<td>${r.id}</td>
+<td>${r.title}</td>
+<td>${r.description}</td>
+<td class="${statusClass}">${r.status}</td>
+
+</tr>
+
+`
+
+})
+
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+localStorage.clear()
+window.location.href="index.html"
+
+}
+
+
+/* LOAD DATA */
+
+loadRequests()
+
+/* AUTO REFRESH REQUESTS */
+
+setInterval(() => {
+loadRequests()
+}, 5000)
+</script>
+
+</body>
+
+</html>

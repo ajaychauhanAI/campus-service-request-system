@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Admin Dashboard</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+margin:0;
+padding:30px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+margin-bottom:30px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+text-align:center;
+}
+
+.card h2{
+font-size:35px;
+color:#38bdf8;
+margin:0;
+}
+
+.search{
+margin-bottom:20px;
+}
+
+.search input{
+width:auto;
+padding:10px;
+border:none;
+border-radius:5px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:#1e293b;
+}
+
+th,td{
+padding:12px;
+border-bottom:1px solid #334155;
+text-align:center;
+}
+
+th{
+background:#0284c7;
+}
+
+select{
+padding:6px;
+}
+
+button{
+padding:6px 10px;
+border:none;
+cursor:pointer;
+border-radius:5px;
+}
+
+.delete{
+background:#ef4444;
+color:white;
+}
+
+.refresh{
+background:#38bdf8;
+color:white;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<div class="header">
+
+<div>
+<h1>Admin Dashboard</h1>
+<p id="loginInfo" style="color:#38bdf8;font-size:14px;margin-top:5px;"></p>
+</div>
+
+<div>
+<button class="refresh" onclick="loadRequests()">Refresh</button>
+<button style="background:#ef4444;margin-left:10px;" onclick="logout()">Logout</button>
+</div>
+
+</div>
+
+
+<div class="cards">
+
+<div class="card">
+<h2 id="total">0</h2>
+<p>Total</p>
+</div>
+
+<div class="card">
+<h2 id="pending">0</h2>
+<p>Pending</p>
+</div>
+
+<div class="card">
+<h2 id="progress">0</h2>
+<p>In Progress</p>
+</div>
+
+<div class="card">
+<h2 id="resolved">0</h2>
+<p>Resolved</p>
+</div>
+
+</div>
+
+
+<div class="search">
+
+<input type="text" id="search" placeholder="Search ..." onkeyup="filterTable()">
+
+</div>
+
+
+<table id="table">
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+<th>Roll</th>
+<th>Name</th>
+<th id="deptColumn">Department</th>
+<th>Title</th>
+<th>Description</th>
+<th>Status</th>
+<th>Delete</th>
+
+</tr>
+
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+
+<script>
+
+const API_URL="https://script.google.com/macros/s/AKfycbx9qCJPXafotNo9lleMj9uSLxmeEbJdgngI7uhEN57UWFs5x1obeNotyLg4rhPSjmH8/exec"
+
+const role = localStorage.getItem("role");
+const dept = localStorage.getItem("department");
+
+if(!role){
+alert("Please login first");
+window.location.href = "index.html";
+}
+
+if(role !== "admin" && role !== "superadmin"){
+alert("Unauthorized Access");
+window.location.href = "index.html";
+}
+
+if(role === "admin"){
+document.getElementById("deptColumn").style.display="none"
+}
+
+/* SHOW WHO LOGGED IN */
+
+const loginInfo = document.getElementById("loginInfo")
+
+if(role === "superadmin"){
+
+loginInfo.innerText = "Logged in as: Super Admin"
+
+}
+
+else if(role === "admin"){
+
+loginInfo.innerText = "Logged in as: Department Admin (" + dept + ")"
+
+}
+
+async function loadRequests(){
+
+const res = await fetch(API_URL,{
+method:"POST",
+body:JSON.stringify({
+action:"getRequests",
+role:localStorage.getItem("role"),
+department:localStorage.getItem("department")
+})
+})
+
+const data = await res.json()
+
+const table=document.querySelector("#table tbody")
+
+table.innerHTML=""
+
+let total=0
+let pending=0
+let progress=0
+let resolved=0
+
+data.requests.forEach(r=>{
+
+total++
+
+if(r.status=="Pending") pending++
+if(r.status=="In Progress") progress++
+if(r.status=="Resolved") resolved++
+
+table.innerHTML+=`
+
+<tr>
+
+<td>${r.id}</td>
+<td>${r.roll}</td>
+<td>${r.name}</td>
+
+${role==="superadmin" ? `<td>${r.department}</td>` : ""}
+
+<td>${r.title}</td>
+<td>${r.description}</td>
+
+<td>
+
+<select onchange="updateStatus('${r.id}',this.value)">
+<option ${r.status=="Pending"?"selected":""}>Pending</option>
+<option ${r.status=="In Progress"?"selected":""}>In Progress</option>
+<option ${r.status=="Resolved"?"selected":""}>Resolved</option>
+</select>
+
+</td>
+
+<td>
+<button class="delete" onclick="deleteRequest('${r.id}')">Delete</button>
+</td>
+
+</tr>
+`
+
+})
+
+document.getElementById("total").innerText=total
+document.getElementById("pending").innerText=pending
+document.getElementById("progress").innerText=progress
+document.getElementById("resolved").innerText=resolved
+
+}
+
+
+
+async function updateStatus(id,status){
+
+await fetch(API_URL,{
+method:"POST",
+body:JSON.stringify({
+action:"updateStatus",
+id:id,
+status:status
+})
+})
+
+loadRequests()
+
+}
+
+
+async function deleteRequest(id){
+
+if(!confirm("Delete request?")) return
+
+await fetch(API_URL,{
+method:"POST",
+body:JSON.stringify({
+action:"deleteRequest",
+id:id
+})
+})
+
+loadRequests()
+
+}
+
+
+function filterTable(){
+
+let input=document.getElementById("search").value.toLowerCase()
+
+let rows=document.querySelectorAll("#table tbody tr")
+
+rows.forEach(r=>{
+
+r.style.display=r.innerText.toLowerCase().includes(input)?"":"none"
+
+})
+
+}
+
+
+loadRequests()
+
+function logout(){
+
+if(!confirm("Are you sure you want to logout?")) return
+
+localStorage.clear()
+
+window.location.href="index.html"
+
+}
+
+/* LIVE ADMIN DASHBOARD */
+
+setInterval(() => {
+loadRequests()
+}, 5000)
+</script>
+
+</body>
+
+</html>
