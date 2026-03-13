@@ -4,7 +4,7 @@
 
 Experience the Service Request Management Portal through the live deployment below:
 
-🔗 **Live Demo:** https://your-project-link
+🔗 **Live Demo:** [https://ajaychauhanai.github.io/campus-service-request-system/]
 
 The demo allows users to submit service requests and view how administrators manage and resolve them.
 
