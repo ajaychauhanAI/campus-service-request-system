@@ -101,13 +101,13 @@ This ensures **better tracking, accountability, and faster issue resolution**.
 # 🏗 System Architecture
 
 - Student Portal → Request Form
-    ↓
+-    ↓
 - Google Apps Script (Backend API)
-    ↓
+-    ↓
 - Google Sheets (Database)
-    ↓
+-    ↓
 - Admin Dashboard
-    ↓
+-    ↓
 - Status Update → Student View
 
 
