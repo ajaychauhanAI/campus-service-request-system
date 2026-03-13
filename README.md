@@ -139,8 +139,8 @@ This ensures **better tracking, accountability, and faster issue resolution**.
 # 👨‍💻 Team Members
 
 ### Ajay
-GitHub: https://github.com/YOUR_GITHUB  
-LinkedIn: https://linkedin.com/in/YOUR_LINKEDIN
+GitHub: https://github.com/ajaychauhanAI
+LinkedIn: https://www.linkedin.com/in/ajay-chauhan-9053893a3?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
 
 ### Team Member 2
 GitHub: https://github.com/MEMBER2  
